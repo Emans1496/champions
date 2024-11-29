@@ -40,7 +40,7 @@ export default function StartGameScreen() {
         <div className="Modal">
           <div className="ModalContent">
             <img src={ChampionsLogo} alt="Champions Logo" style={{ width: "400px", padding: "50px" }} />
-            <h1>Read this first</h1>
+            <h1>Giusy sei una vera leonessa 🦁❤️❤️</h1>
             <p style={{ width: "50%" }}>
               This application is a non-commercial project created solely for
               educational purposes and portfolio development. All rights to the

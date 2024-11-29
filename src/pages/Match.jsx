@@ -1,5 +1,5 @@
 // Match.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import Card from "../views/Card";
@@ -7,6 +7,8 @@ import { getPlayers } from "../API/players";
 import "../components/style/Match.scss";
 import { ClipLoader } from "react-spinners";
 import ChampionsLogo from "../assets/img/champions logo.png";
+import atmosphere from "../assets/sounds/atmosphere.mov";
+import goalSound from "../assets/sounds/goal.mov";
 
 const realMadridBanner =
   "https://upload.wikimedia.org/wikipedia/it/thumb/0/0c/Real_Madrid_CF_logo.svg/800px-Real_Madrid_CF_logo.svg.png";
@@ -26,10 +28,10 @@ export default function Match() {
   const awayTeamLogo =
     awayTeam === "Barcelona" ? barcellonaBanner : realMadridBanner;
 
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
   const [modalTeamHome, setModalTeamHome] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [hoveredPlayer, setHoveredPlayer] = useState(null); 
+  const [hoveredPlayer, setHoveredPlayer] = useState(null);
   const [possession, setPossession] = useState("home");
   const [currentTurn, setCurrentTurn] = useState("home");
   const [phase, setPhase] = useState("action");
@@ -92,6 +94,10 @@ export default function Match() {
       "Avversario evita il contrasto!",
     ],
   };
+
+  // Riferimenti per gli elementi audio
+  const backgroundAudioRef = useRef(null);
+  const goalAudioRef = useRef(null);
 
   useEffect(() => {
     // Carica i giocatori per entrambe le squadre
@@ -173,6 +179,31 @@ export default function Match() {
       }
     }
   }, [currentTurn, possession, phase, isLoading]);
+
+  // Avvia la musica di sottofondo quando il componente viene montato
+  useEffect(() => {
+    if (backgroundAudioRef.current) {
+      backgroundAudioRef.current.volume = 0.2;
+      backgroundAudioRef.current.loop = true;
+      backgroundAudioRef.current.play();
+    }
+
+    // Pulizia al smontaggio del componente
+    return () => {
+      if (backgroundAudioRef.current) {
+        backgroundAudioRef.current.pause();
+        backgroundAudioRef.current.currentTime = 0;
+      }
+    };
+  }, []);
+
+  // Funzione per riprodurre l'effetto sonoro del goal
+  const playGoalSound = () => {
+    if (goalAudioRef.current) {
+      goalAudioRef.current.volume = 0.5;
+      goalAudioRef.current.play();
+    }
+  };
 
   function closeSetModalTeamHome() {
     setModalTeamHome(false);
@@ -279,6 +310,9 @@ export default function Match() {
         setActionMessage(successMsg);
 
         if (actionType === "Shot") {
+          // Riproduci il suono del goal
+          playGoalSound();
+
           setScore((prevScore) => ({
             ...prevScore,
             home: prevScore.home + 1,
@@ -436,6 +470,9 @@ export default function Match() {
           setActionMessage(successMsg);
 
           if (actionType === "Shot") {
+            // Riproduci il suono del goal
+            playGoalSound();
+
             setScore((prevScore) => ({
               ...prevScore,
               away: prevScore.away + 1,
@@ -553,7 +590,7 @@ export default function Match() {
           // Messaggio di fallimento
           const failureMsg =
             failureMessages["Tackle"][
-              Math.floor(Math.random() * failureMessages["Tackle"].length)
+              Math.floor(Math.random() * successMessages["Tackle"].length)
             ];
           setActionMessage(failureMsg);
           // L'utente mantiene il possesso e può eseguire un'altra azione
@@ -594,13 +631,15 @@ export default function Match() {
 
   return (
     <>
+      {/* Elementi audio */}
+      <audio ref={backgroundAudioRef} src={atmosphere} loop />
+      <audio ref={goalAudioRef} src={goalSound} />
+
       {hoveredPlayer &&
         ReactDOM.createPortal(
-          <div
-            className="hover-modal"
-          >
+          <div className="hover-modal">
             <div className="hoverModalTop">
-            <img src={ChampionsLogo} className="hoverModalLogo" />
+              <img src={ChampionsLogo} className="hoverModalLogo" alt="Logo" />
             </div>
             <img
               src={
@@ -622,8 +661,8 @@ export default function Match() {
             <p>{hoveredPlayer.strWeight}</p>
             <p>{hoveredPlayer.strAge}</p>
             <p>{hoveredPlayer.strWage}</p>
-            <p>{hoveredPlayer.strWorkRate}</p>         
-            </div>,
+            <p>{hoveredPlayer.strWorkRate}</p>
+          </div>,
           document.body
         )}
 
@@ -669,21 +708,24 @@ export default function Match() {
                     selectedPlayer
                   );
                   return (
-                    <div key={actionType} className="actionPreview" onClick={() => handleAction(actionType)}>
-                      <p>
-                        {actionType}
-                      </p>
+                    <div
+                      key={actionType}
+                      className="actionPreview"
+                      onClick={() => handleAction(actionType)}
+                    >
+                      <p>{actionType}</p>
                       <p>Success Rate {preview.percentage}%</p>
                     </div>
                   );
                 })}
               {phase === "defense" && (
-                <div className="actionPreview" onClick={() => handleDefenseAction(selectedPlayer)}>
+                <div
+                  className="actionPreview"
+                  onClick={() => handleDefenseAction(selectedPlayer)}
+                >
+                  <p>Tackle</p>
                   <p>
-                    Tackle
-                  </p>
-                  <p>
-                    Success Rate {" "}
+                    Success Rate{" "}
                     {
                       calculateSuccessPreview("Tackle", selectedPlayer)
                         .percentage
