@@ -1,0 +1,71 @@
+.Credits {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    background-image: url(/src/assets/img/Background-home.png);
+    width: 100vw;
+    height: 100vh;
+}
+
+.fade-appear {
+    opacity: 0;
+}
+
+.fade-appear-active {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+
+.CreditsContent {
+    font-size: 0.6rem;
+    font-family: 'Archivo Black';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: black;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: black 5px 5px 10px;
+}
+
+.BackButton {
+    font-family: 'Archivo Black';
+    text-align: center;
+}
+
+.BackButton button {
+    margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    transition: 0.5s;
+    font-size: 0.8rem;
+}
+
+.BackButton button:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.BackButton .LinkedinButton {
+    background-color: #0e76a8;
+    color: white;
+}

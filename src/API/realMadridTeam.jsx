@@ -1,0 +1,11 @@
+import axiosInstance from "./axiosInstance";
+
+export const getRealMadridTeam = async () => {
+    try {
+        const response = await axiosInstance.get("/searchteams.php?t=Real_Madrid");
+        return response.data.teams[0];
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}

@@ -1,0 +1,101 @@
+.match-stats-page {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjhS5cdXGFqq1voxY_tZvp9amWcVGEoHB-WA&s");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: "Archivo Black";
+  overflow-y: hidden;
+}
+
+.topStats-page {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #0009;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 50px;
+  color: white;
+}
+
+.teams-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #0009;
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+  gap: 20px;
+}
+
+.team-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #0009;
+  padding: 30px;
+  border-radius: 20px;
+  width: 50%;
+  gap: 20px;
+}
+
+.topStats-page img {
+  width: 50px;
+  height: 0 auto;
+}
+
+.actions-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #0009;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 50px;
+  color: white;
+  height: 50%;
+  overflow-y: auto;
+  gap: 20px;
+}
+.button-page {
+  position: absolute;
+  bottom: 50px; 
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Archivo Black';
+  font-size: 20px;
+  font-weight: bolder;
+  border-radius: 30px;
+  padding: 15px;
+  width: 300px;
+  z-index: 2;
+  transition: 0.5s;
+  background-color: white;
+  color: black;
+}
+
+.button-page:hover {
+  color: white;
+  background-color: black;
+  transition: 0.5s;
+}
