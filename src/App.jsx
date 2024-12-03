@@ -5,7 +5,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { AudioProvider } from "./context/AudioContext"; // Importa AudioProvider
 import PrivateRoute from "./components/PrivateRoute";
 import { CSSTransition } from "react-transition-group";
-import "./app.css";
+import "./components/style/App.css";
 
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
