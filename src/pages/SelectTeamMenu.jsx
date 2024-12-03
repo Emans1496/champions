@@ -2,6 +2,8 @@ import "../components/style/SelectTeamMenu.scss";
 import { CSSTransition } from "react-transition-group";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "../components/style/SelectTeamMenu.scss";
+
 
 export default function SelectTeamMenu() {
   const loghi = [

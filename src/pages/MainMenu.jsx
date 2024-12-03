@@ -32,14 +32,14 @@ function MainMenu() {
   }
 
   function goToSelectTeam() {
-    navigate("/select-team-menu");
+    navigate("/select-team"); // Corrected path
   }
 
   return (
     <CSSTransition
-      in={true} 
-      appear={true} 
-      timeout={500} 
+      in={true}
+      appear={true}
+      timeout={500}
       classNames="fade"
       unmountOnExit
     >
@@ -50,7 +50,7 @@ function MainMenu() {
           </div>
         )}
         <div className="ContentMenu">
-          <img src={ChampionsLogo} className="ChampionsLogoMenu" />
+          <img src={ChampionsLogo} className="ChampionsLogoMenu" alt="Logo" />
           <ul className="MenuList">
             <li>
               <span onClick={goToSelectTeam}>Play Match</span>
@@ -78,13 +78,20 @@ function MainMenu() {
             <img
               src="https://i1.sndcdn.com/artworks-000016845084-8utmr3-t500x500.jpg"
               style={{ width: "100px", marginLeft: "10px" }}
+              alt="Album Art"
             />
             <h3>Jerk it Out (Caesars)</h3>
             <button onClick={togglePlayPause} className="PlayMusicButton">
               {audioRef.current?.paused ? (
-                <img src="https://img.freepik.com/premium-vector/play-pause-icon-set-music-audio-video-start-pause-button-vector-symbol-black-filled-outlined-style_268104-22577.jpg" />
+                <img
+                  src="https://img.freepik.com/premium-vector/play-pause-icon-set-music-audio-video-start-pause-button-vector-symbol-black-filled-outlined-style_268104-22577.jpg"
+                  alt="Play Icon"
+                />
               ) : (
-                <img src="https://img.freepik.com/premium-vector/play-pause-icon-set-music-audio-video-start-pause-button-vector-symbol-black-filled-outlined-style_268104-22577.jpg" />
+                <img
+                  src="https://img.freepik.com/premium-vector/play-pause-icon-set-music-audio-video-start-pause-button-vector-symbol-black-filled-outlined-style_268104-22577.jpg"
+                  alt="Pause Icon"
+                />
               )}
             </button>
           </div>
