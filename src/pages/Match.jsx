@@ -437,7 +437,7 @@ export default function Match() {
         cpuPlayers[Math.floor(Math.random() * cpuPlayers.length)];
 
       setActionMessage(
-        `La CPU tenta "${actionType}" con ${randomPlayer.strPlayer}...`
+        `CPU trys "${actionType}" with ${randomPlayer.strPlayer}...`
       );
 
       const { percentage } = calculateSuccessPreview(

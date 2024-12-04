@@ -44,9 +44,9 @@ export default function SignUp() {
         </video>
         <div className="content">
           <img
+            className="signUpLogo"
             src={championsLogo}
             alt="logo"
-            style={{ width: "500px", marginBottom: "50px" }}
           />
           <h1>The Football Card Game</h1>
           <p>
@@ -66,7 +66,6 @@ export default function SignUp() {
       >
         <div className="signup-page">
           <div className="registrazione">
-            <img src={championsLogo} alt="logo" style={{ width: "250px" }} />
             <h1>SignUp</h1>
             {error && <p>{error}</p>}
             <form onSubmit={handleSignUp} className="signup-form">
