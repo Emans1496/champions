@@ -10,6 +10,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "../components/style/Login.scss";
 import championsLogo from "../assets/img/champions logo.png";
 import { CSSTransition } from "react-transition-group";
+import video from "../assets/video/bg.mp4";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -48,7 +49,7 @@ export default function Login() {
     <>
       <div className="Hero">
         <video autoPlay loop muted playsInline className="video-bg">
-          <source src="/src/assets/video/bg.mp4" type="video/mp4" />
+          <source src={video} type="video/mp4" />
           Il tuo browser non supporta i video HTML5.
         </video>
         <div className="content">
