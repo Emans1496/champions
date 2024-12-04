@@ -56,7 +56,7 @@ export default function Login() {
           <img
             src={championsLogo}
             alt="logo"
-            style={{ width: "500px", marginBottom: "50px" }}
+            className="signUpLogo"
           />
           <h1>The Football Card Game</h1>
           <p>
@@ -78,8 +78,7 @@ export default function Login() {
       >
         <div>
           <div className="login">
-            <div className="login-page">
-              <img src={championsLogo} alt="logo" style={{ width: "250px" }} />
+            <div className="registrazione">
               <h1>Login</h1>
               {error && <p>{error}</p>}
               <form onSubmit={handleLogin} className="login-form">

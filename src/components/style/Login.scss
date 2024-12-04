@@ -16,6 +16,11 @@
     overflow-y: auto;
 }
 
+.signUpLogo {
+    width: 500px;
+    height: 0 auto;
+}
+
 .login{
     background: url(/src/assets/img/background-start.avif);
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
@@ -94,4 +99,59 @@
     width: 20px;
     height: 20px;
     margin-right: 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    .signup-page {
+      background: url(/src/assets/img/background-home.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      height: 100vh;
+      color: white;
+      font-family: "Archivo Black";
+      position: relative;
+      z-index: 1;
+    }
+  
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+  
+    .signUpLogo {
+      width: 250px;
+      height: 0 auto;
+    }
+  
+    .registrazione {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #0009;
+      padding: 50px;
+      border-radius: 20px;
+      color: white;
+      width: 100%;
+      height: 50%;
+      overflow-y: hidden;
+      text-align: center;
+    }
+  
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
   }

@@ -118,3 +118,34 @@
     left: 40vw;
     top: 10vh;
 }
+
+
+@media screen and (max-width: 500px) {
+    .ChampionsLogoMenu {
+        width: 60%;
+        position: relative;
+        bottom: 10vh;
+        left: 20vw;
+    }
+
+    .MenuList li {
+        font-size: 1.7rem;
+        box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 100%;
+    }
+
+    .MainMenu {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url(/src/assets/img/imageMainMenu.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 80%;
+        text-align: center;
+        overflow: hidden;
+    }
+}
