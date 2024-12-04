@@ -118,13 +118,18 @@
     transition: 0.5s;
 }
 
+.requirment {
+    font-family: "Archivo Black";
+    font-size: 1rem;
+}
+
 
 @media screen and (max-width: 500px) {
     .requirment {
         display: none;
     }
 
-    p{
+    .ModalContent p{
         font-size:0.6rem;
     }
 
