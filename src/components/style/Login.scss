@@ -1,0 +1,97 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #0009;
+    padding: 30px;
+    border-radius: 20px;
+    margin: 50px;
+    color: white;
+    width: 50%;
+    height: 50%;
+    overflow-y: auto;
+}
+
+.login{
+    background: url(/src/assets/img/background-start.avif);
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    color: white;
+    font-family: "Archivo Black";
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-form input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .login-button{
+    background-color: #ADF031;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+   transition: background-color 0.3s ease;
+   margin-bottom: 20px;
+  }
+
+  .login-button:hover {
+    background-color: #9adc20;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    color: white;
+  }
+
+  .google-button{
+    background-color: #f68019;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.5s ease;
+    transition: transform 0.5s ease;
+    margin-bottom: 20px;
+  }
+
+  .google-button:hover {
+    background-color: #ef760c;
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+    color: white;
+  }
+
+  .google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+  }

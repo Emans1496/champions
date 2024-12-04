@@ -9,7 +9,7 @@ export const AudioProvider = ({ children }) => {
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = 0.2;
+      audioRef.current.volume = 0.1;
       audioRef.current.loop = true;
     }
   }, []);

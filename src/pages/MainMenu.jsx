@@ -71,32 +71,14 @@ function MainMenu() {
               <span onClick={openWarning}>Settings</span>
             </li>
             <li>
+              <span onClick={togglePlayPause}>Music Play/Stop</span>
+            </li>
+            <li>
               <span onClick={goToCredits}>Credits</span>
             </li>
           </ul>
-          <div className="AudioPlayer">
-            <img
-              src="https://i1.sndcdn.com/artworks-000016845084-8utmr3-t500x500.jpg"
-              style={{ width: "100px", marginLeft: "10px" }}
-              alt="Album Art"
-            />
-            <h3>Jerk it Out (Caesars)</h3>
-            <button onClick={togglePlayPause} className="PlayMusicButton">
-              {audioRef.current?.paused ? (
-                <img
-                  src="https://img.freepik.com/premium-vector/play-pause-icon-set-music-audio-video-start-pause-button-vector-symbol-black-filled-outlined-style_268104-22577.jpg"
-                  alt="Play Icon"
-                />
-              ) : (
-                <img
-                  src="https://img.freepik.com/premium-vector/play-pause-icon-set-music-audio-video-start-pause-button-vector-symbol-black-filled-outlined-style_268104-22577.jpg"
-                  alt="Pause Icon"
-                />
-              )}
-            </button>
           </div>
         </div>
-      </div>
     </CSSTransition>
   );
 }

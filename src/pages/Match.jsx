@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import Card from "../views/Card";
@@ -8,6 +8,7 @@ import { ClipLoader } from "react-spinners";
 import ChampionsLogo from "../assets/img/champions logo.png";
 import atmosphere from "../assets/sounds/atmosphere.mov";
 import goalSound from "../assets/sounds/goal.mov";
+import { AudioContext } from "../context/AudioContext";
 
 const realMadridBanner =
   "https://upload.wikimedia.org/wikipedia/it/thumb/0/0c/Real_Madrid_CF_logo.svg/800px-Real_Madrid_CF_logo.svg.png";
@@ -59,44 +60,47 @@ export default function Match() {
 
   // Messaggi di successo e fallimento per le azioni
   const successMessages = {
-    Pass: ["Ottimo passaggio!", "Passaggio riuscito!", "Passaggio brillante!"],
-    Cross: ["Cross riuscito!", "Ottimo cross!", "Cross ben eseguito!"],
-    Shot: ["GOOOOOLLLL!", "È un gol!", "Che tiro fantastico!"],
+    Pass: ["Good Pass", "Pass success!", "An excellent pass!"],
+    Cross: ["Good cross!", "An amazing cross!", "The cross is perfect!"],
+    Shot: ["GOOOOOLLLL!", "WHAT A GOAL!", "AMAZING GOAL! A FANTASTIC PLAYER!"],
     Dribble: [
-      "Dribbling riuscito!",
-      "Ha superato il difensore!",
-      "Dribbling abilissimo!",
+      "Great dribbling!",
+      "He dribbles like a pro!",
+      "Dribble success!",
     ],
-    Tackle: ["Contrasto riuscito!", "Ottimo contrasto!", "Palla recuperata!"],
+    Tackle: ["Contrast success!", "Good tackle!", "Ball is safe!"],
   };
 
   const failureMessages = {
     Pass: [
-      "Passaggio intercettato!",
-      "Passaggio fallito!",
-      "Avversario ruba la palla!",
+      "No pass!",
+      "Pass failed!",
+      "The pass is blocked!",
     ],
     Cross: [
-      "Cross bloccato!",
-      "Cross non riuscito!",
-      "Difensore respinge il cross!",
+      "Cross blocked!",
+      "Cross failed!",
+      "Defensive player blocks the cross!",
     ],
-    Shot: ["Tiro fuori!", "Parata del portiere!", "Tiro impreciso!"],
+    Shot: ["Shot out!", "An unlucky shot!", "The shot is missed!"],
     Dribble: [
-      "Dribbling fallito!",
-      "Difensore recupera la palla!",
-      "Perso il possesso!",
+      "Dribbling failed!",
+      "No dribble!",
+      "He tries to dribble but fails!",
     ],
     Tackle: [
-      "Contrasto mancato!",
-      "Fallito il contrasto!",
-      "Avversario evita il contrasto!",
+      "Tackle failed!",
+      "Tackle missed!",
+      "The tackle is not good!",
     ],
   };
 
   // Riferimenti per gli elementi audio
   const backgroundAudioRef = useRef(null);
   const goalAudioRef = useRef(null);
+
+  // Accesso all'audioRef dall'AudioContext
+  const [isAtmospherePlaying, setIsAtmospherePlaying] = useState(false);
 
   useEffect(() => {
     // Carica i giocatori per entrambe le squadre
@@ -179,30 +183,28 @@ export default function Match() {
     }
   }, [currentTurn, possession, phase, isLoading]);
 
-  // Avvia la musica di sottofondo quando il componente viene montato
-  useEffect(() => {
-    if (backgroundAudioRef.current) {
-      backgroundAudioRef.current.volume = 0.2;
+
+  // useEffect per gestire l'audio quando il componente viene montato
+  const handleUserClick = () => {
+    if (!isAtmospherePlaying && backgroundAudioRef.current) {
+      backgroundAudioRef.current.volume = 0.8;
       backgroundAudioRef.current.loop = true;
       backgroundAudioRef.current.play();
+      setIsAtmospherePlaying(true);
     }
+    if (audioRef && audioRef.current) {
+      audioRef.current.volume = 0;
+    }
+  };
 
-    // Pulizia al smontaggio del componente
-    return () => {
-      if (backgroundAudioRef.current) {
-        backgroundAudioRef.current.pause();
-        backgroundAudioRef.current.currentTime = 0;
-      }
-    };
-  }, []);
-
-  // Funzione per riprodurre l'effetto sonoro del goal
   const playGoalSound = () => {
     if (goalAudioRef.current) {
       goalAudioRef.current.volume = 0.5;
       goalAudioRef.current.play();
     }
   };
+
+ 
 
   function closeSetModalTeamHome() {
     setModalTeamHome(false);
@@ -280,7 +282,7 @@ export default function Match() {
     const playerStats = selectedPlayer;
 
     setActionMessage(
-      `Tentativo di "${actionType}" con ${playerStats.strPlayer}...`
+      ` "${actionType}" with "${playerStats.strPlayer}..."`
     );
 
     const { percentage } = calculateSuccessPreview(actionType, playerStats);
@@ -290,7 +292,6 @@ export default function Match() {
     setTimeout(() => {
       const actionSuccess = randomNumber <= successChance;
 
-      // Aggiungi l'azione alle statistiche dell'utente
       setHomeActions((prevActions) => [
         ...prevActions,
         {
@@ -367,7 +368,7 @@ export default function Match() {
     const defenderStats = player; // Giocatore selezionato
 
     setActionMessage(
-      `Tentativo di Contrasto con ${defenderStats.strPlayer}...`
+      `Try to tackle ${defenderStats.strPlayer}...`
     );
 
     const { percentage } = calculateSuccessPreview("Tackle", defenderStats);
@@ -545,7 +546,7 @@ export default function Match() {
         cpuPlayers[Math.floor(Math.random() * cpuPlayers.length)];
 
       setActionMessage(
-        `La CPU tenta un Contrasto con ${defenderStats.strPlayer}...`
+        `Try a tackle ${defenderStats.strPlayer}...`
       );
 
       const { percentage } = calculateSuccessPreview(
@@ -589,7 +590,7 @@ export default function Match() {
           // Messaggio di fallimento
           const failureMsg =
             failureMessages["Tackle"][
-              Math.floor(Math.random() * successMessages["Tackle"].length)
+              Math.floor(Math.random() * failureMessages["Tackle"].length)
             ];
           setActionMessage(failureMsg);
           // L'utente mantiene il possesso e può eseguire un'altra azione
@@ -630,6 +631,7 @@ export default function Match() {
 
   return (
     <>
+    <div onClick={handleUserClick}>
       {/* Elementi audio */}
       <audio ref={backgroundAudioRef} src={atmosphere} loop />
       <audio ref={goalAudioRef} src={goalSound} />
@@ -798,6 +800,7 @@ export default function Match() {
             {timeRemaining % 60}
           </p>
         </div>
+      </div>
       </div>
     </>
   );

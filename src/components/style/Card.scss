@@ -34,11 +34,7 @@
     text-align: center;
     color: black;
 
-    @media (max-width: 650px) {
-        width: 25vw;
-        max-width: 100px;
-        min-width: 100px;
-    }
+
 
     .CardTop {
         position: relative;
@@ -146,24 +142,58 @@
         opacity: 0.5;
       }
       
+}
 
+@media screen and (max-width: 1580px) {
+    .Card {
+        width: 40vw;
+        max-width: 200px;
+        aspect-ratio: 2 / 3;
+        background-image: url(/src/assets/img/Card.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 5px;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+        color: black;
+    }
 
-    @media (max-width: 480px) {
-        width: 30vw;
-        max-width: 90px;
+    .PlayerImg {
+        position: absolute;
+        width: 90%;
+        height: auto;
+        bottom: 78%;
+        left: 50%;
+        transform: translateX(-50%);
+        object-fit: cover;
+    }
 
-        .CardInfo {
-            font-size: clamp(0.5rem, 2vw, 0.7rem);
-            gap: 1px;
-        }
+    .teamBadge {
+        position: absolute;
+        width: 17%;
+        height: auto;
+        top: -2500%;
+        left: 8%;
+        object-fit: cover;
+    }
 
-        .PlayerImg {
-            width: 60%;
-        }
-
-        .CardPosition,
-        .CardOverall {
-            font-size: clamp(6px, 2vw, 10px);
-        }
+    .CardOverall {
+        // position: absolute;
+        // bottom: 2066%;
+        // left: 73%;
+        font-size: clamp(12px, 2vw, 500px);
+        // font-weight: bolder;
+        position: absolute;
+        bottom: 1700%;
+        left: 65%;
+        font-size: clamp(12px, 2vw, 28px);
+        font-weight: bolder;
     }
 }
+
