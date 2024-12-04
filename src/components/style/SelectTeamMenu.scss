@@ -202,3 +202,178 @@
 .confirmBtn:hover{
     cursor:pointer;
 }
+
+@media screen and (max-width: 500px) {
+
+    .SelectTeamMenu {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        background-position: center;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    .FirstTeamSelection {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        background-position: center;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    .Team1 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.381);
+        padding: 30px;
+        border-radius: 20px;
+        margin: 5px;
+        width: 93vw;
+        color: white;
+    }
+
+    .Team2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.381);
+        padding: 30px;
+        border-radius: 20px;
+        margin: 5px;
+        width: 93vw;
+        color: white;
+    }
+
+    .vs {
+        font-family: "Archivo Black";
+        font-size: 2rem;
+        color: white;
+        text-align: center;
+        transition: transform 0.5s, border 0.5s;
+    }
+
+    .home {
+        font-family: "Archivo Black";
+        font-size: 1rem;
+        color: white;
+        text-align: center;
+    }
+
+    .logoLega {
+        width: 15vw;
+        margin: 10px;
+    }
+
+    .logo {
+        width: 10vw;
+        margin: 10px;
+    }
+
+    .rating{
+        width: 15vw;
+    }
+
+    .confirmBtn{
+        width: 30vw;
+    }
+
+    .returnToMainMenu{
+        font-size: 0.8rem;
+        top: 96vh;
+        left: 25vw;
+        transition: 0.5s;
+    }
+
+    .Title{
+        font-size: 1.5rem;
+        top: 1vh;
+    }
+    
+    .ChooseArrowLega{
+        width: 10vw;
+        background-color: aliceblue;
+        border-radius: 150px;
+    }
+
+    .ChooseArrowLega:hover{
+        transform: scale(1);
+    }
+
+    .ChooseArrow{
+        width: 10vw;
+        background-color: aliceblue;
+        border-radius: 150px;
+    }
+
+    .ChooseArrow:hover{
+        transform: scale(1);
+    }
+    
+    .ChooseArrowLegaLeft{
+        width: 10vw;
+        background-color: aliceblue;
+        border-radius: 150px;
+    }
+
+    .ChooseArrowLegaLeft:hover{
+        transform: scale(1);
+    }
+
+
+    .WarningLeague{
+        font-size: 0.8rem;
+        width: 60vw;
+        left: 20vw;
+    }
+
+    .WarningTeam{
+        font-size: 0.8rem;
+        width: 60vw;
+        left: 20vw;
+    }
+
+    .WarningLeague{
+        font-family: "Archivo Black";
+        font-style: italic;
+        font-size: 1rem;
+        font-weight: bolder;
+        color: white;
+        text-align: center;
+        transition: transform 0.5s, border 0.5s;
+        width: 100vw;
+        background-color: rgba(255, 0, 0, 0.694);
+        position: absolute;
+        padding: 5px;
+        left: 0vw;
+        top: 46vh;
+        z-index: 1;
+    }
+    
+}
