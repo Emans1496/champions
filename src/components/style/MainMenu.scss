@@ -128,6 +128,19 @@
         left: 25vw;
     }
 
+    .ContentMenu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: -5vw;
+        top: 25vh;
+    }
+
+    .MenuList {
+        margin: 0;
+        padding: 0;
+    }
+
     .MenuList li {
         font-size: 1.5rem;
         box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
