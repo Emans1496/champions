@@ -37,7 +37,7 @@ export default function Match() {
   const [phase, setPhase] = useState("action");
   const [score, setScore] = useState({ home: 0, away: 0 });
   const [timeRemaining, setTimeRemaining] = useState(180);
-  const [actionMessage, setActionMessage] = useState(null);
+  const [actionMessage, setActionMessage] = useState(false);
   const [goalModal, setGoalModal] = useState(null);
   const [successRates, setSuccessRates] = useState({
     passCount: 0,
@@ -663,6 +663,7 @@ export default function Match() {
             <p>{hoveredPlayer.strAge}</p>
             <p>{hoveredPlayer.strWage}</p>
             <p>{hoveredPlayer.strWorkRate}</p>
+            <p>Overall{hoveredPlayer.overall}</p>
           </div>,
           document.body
         )}
