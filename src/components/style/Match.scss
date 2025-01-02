@@ -156,6 +156,34 @@
     transition: 0.5s;
 }
 
+.Card >
+.CardName {
+    font-size: 10px;
+    font-weight: bolder;
+    position: absolute;
+    top: -30%;
+}
+
+.Card >
+.CardStatsName {
+    display: flex;
+    gap: 7px;
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    top: 180%;
+}
+
+.Card >
+.CardStatsValue {
+    display: flex;
+    gap: 7px;
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    top: 300%;
+}
+
 .match {
     overflow: hidden;
     background: url("https://i.pinimg.com/originals/f5/ca/53/f5ca53b794826020f0ea641c49d262ba.jpg");
