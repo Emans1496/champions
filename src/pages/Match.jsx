@@ -654,6 +654,7 @@ export default function Match() {
               }
               alt={hoveredPlayer.strPlayer}
               style={{ width: "400px" }}
+              className="hoverModalImagePlayer"
             />
             <h1>{hoveredPlayer.strPlayer}</h1>
             <p>{hoveredPlayer.strTeam}</p>
@@ -663,7 +664,7 @@ export default function Match() {
             <p>{hoveredPlayer.strAge}</p>
             <p>{hoveredPlayer.strWage}</p>
             <p>{hoveredPlayer.strWorkRate}</p>
-            <p>Overall{hoveredPlayer.overall}</p>
+            <p>Overall {hoveredPlayer.overall}</p>
           </div>,
           document.body
         )}
@@ -671,7 +672,7 @@ export default function Match() {
       {goalModal && (
         <div className="goalModal">
           <div className="teamModal">
-            <h1 style={{ fontSize: "100px" }}>GOOOOOLLLL!</h1>
+            <h1 style={{ fontSize: "100px" }} className="goalModalText">GOOOOOLLLL!</h1>
             <img
               src={goalModal.team === "home" ? homeTeamLogo : awayTeamLogo}
               alt="Logo della Squadra"
