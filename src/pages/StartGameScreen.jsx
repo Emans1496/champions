@@ -58,7 +58,7 @@ export default function StartGameScreen() {
             </p>
             <h1 className="requirment">For an optimal game experience it is recommended to play on a PC<br></br> with screen resolution 1920x1080</h1>
             <button className="ModalBtn" onClick={closeModal}>
-              I understood
+              I understand
             </button>
           </div>
         </div>
